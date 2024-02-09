@@ -9,17 +9,16 @@ const Posts = ({  open, setOpen }) => {
 
   return (
     <>
-        {!posts.length ? <CircularProgress /> : (
-          <Grid container alignItems="stretch" spacing={3}>
-            {posts.map((post) => (
-              <Grid item xs={12} sm={6} md={4} key={post._id}>
-                <Post post={post} open={open} setOpen={setOpen}/>
-              </Grid>
-            ))}
-          </Grid>
-        )}
+      {!posts.length ? <CircularProgress /> : (
+        <Grid container alignItems="stretch" spacing={3}>
+          {posts.map((post) => (
+            <Grid item xs={12} sm={6} md={4} key={post._id} alignItems="stretch" direction="row" justifyContent="space-between" >
+              <Post post={post} open={open} setOpen={setOpen}/>
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </>
-    
   )
 }
 

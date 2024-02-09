@@ -10,7 +10,7 @@ const App = () => {
 
   return (
       <Container maxWidth="lg" style={{
-        fontFamily:'Georgia'
+        fontFamily:'Georgia',
         }}>
         <AppBar position="static" color="inherit" style={{
           height:'100px',
@@ -26,15 +26,17 @@ const App = () => {
           }}/>
         </AppBar>
         <Grow in>
-          <Container fullWidth style={{
+          <Container style={{
             marginTop:'30px'
           }}>
-            <Grid container justifyContent="space-between" alignItems="stretch" spacing={3} className="posts-structure">
-              <Grid item xs={12} sm={4}>
+            <div style={{display:'flex', justifyContent:'center'}}>
+              <Grid item xs={12} sm={4} style={{marginBottom:'20px'}}>
                 <Form  open={open} setOpen={setOpen} />
               </Grid>
-              <Grid item xs={12}>
-                <Posts open={open} setOpen={setOpen} />
+            </div>
+            <Grid container direction="row" alignItems="stretch" spacing={3} >
+              <Grid item xs={12} className="posts-structure">
+                <Posts open={open} setOpen={setOpen}/>
               </Grid>
             </Grid>
           </Container>
