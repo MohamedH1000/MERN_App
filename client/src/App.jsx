@@ -1,47 +1,25 @@
-import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
-import SignpostIcon from '@mui/icons-material/Signpost';
-import Posts from "./components/Posts/Posts";
-import Form from "./components/Form/Form";
+import { Container } from "@material-ui/core";
 import './App.css';
 import { useState } from "react";
+import NavBar from "./components/NavBar/NavBar";
+import Home from "./components/Home/Home";
+import {Routes, Route} from 'react-router-dom'
+import Auth from "./components/Auth/Auth";
 
 const App = () => {
   const [open, setOpen] = useState(false);
 
-  return (
-      <Container maxWidth="lg" style={{
-        fontFamily:'Georgia',
-        }}>
-        <AppBar position="static" color="inherit" style={{
-          height:'100px',
-          borderRadius:'10px'
-      }}>
-          <Typography variant="h2" align="center" style={{
-            position:'relative',
-            top:'10px',
-            color:'rgb(92, 92, 179)'
-          }}>Pasta Post</Typography>
-          <SignpostIcon className="icon" style={{
-            fontSize:'50px'
-          }}/>
-        </AppBar>
-        <Grow in>
-          <Container style={{
-            marginTop:'30px'
-          }}>
-            <div style={{display:'flex', justifyContent:'center'}}>
-              <Grid item xs={12} sm={4} style={{marginBottom:'20px'}}>
-                <Form  open={open} setOpen={setOpen} />
-              </Grid>
-            </div>
-            <Grid container direction="row" alignItems="stretch" spacing={3} >
-              <Grid item xs={12} className="posts-structure">
-                <Posts open={open} setOpen={setOpen}/>
-              </Grid>
-            </Grid>
+  return ( 
+          <Container maxWidth="lg" style={{
+            fontFamily:'Georgia',
+            }}>
+            <NavBar />
+            <Routes>
+              <Route path='/' exact element={<Home open={open} setOpen={setOpen}/>} />
+              <Route path='/auth' exact element={<Auth />} />
+              <Route path='/:currentId' exact element={<Home open={open} setOpen={setOpen}/>} />
+            </Routes>
           </Container>
-        </Grow>
-      </Container>   
   )
 }
 
